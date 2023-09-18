@@ -1,4 +1,6 @@
-﻿namespace Domain
+﻿using Domain.Exceptions;
+
+namespace Domain
 {
     public class Actor
     {
@@ -13,7 +15,7 @@
             {
                 if(value == "")
                 {
-                    throw new ArgumentException("El nombre no puede ser vacio");
+                    throw new RequiredPropertyException("El nombre no puede ser vacio");
                 }
                 _name = value;
             } 
