@@ -5,21 +5,21 @@ namespace BusinessLogic
 {
     public class ActorService
     {
-        private List<Actor> _actors;
+        private readonly MemoryDatabase _database;
 
-        public ActorService() 
-        { 
-            _actors = new List<Actor>();
+        public ActorService(MemoryDatabase memoryDatabase) 
+        {
+            _database = memoryDatabase;
         }
 
         public void Add(Actor newActor)
         {
-            if(_actors.Any(actor => actor.Name == newActor.Name))
+            if(_database.Actors.Any(actor => actor.Name == newActor.Name))
             {
                 throw new DuplicateEntityException($"El actor {newActor.Name} {newActor.LastName} ya existe");
             }
 
-            _actors.Add(newActor);
+            _database.Actors.Add(newActor);
         }
     }
 }
