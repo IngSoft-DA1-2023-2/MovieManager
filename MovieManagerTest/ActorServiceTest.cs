@@ -12,7 +12,7 @@ namespace MovieManagerTest
         [TestInitialize]
         public void Initialize() 
         { 
-            _service = new ActorService();
+            _service = new ActorService(new MemoryDatabase());
         }
 
         [ExpectedException(typeof(DuplicateEntityException))]

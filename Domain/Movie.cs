@@ -8,7 +8,9 @@ namespace Domain
 {
     public class Movie
     {
-        public string Name { get; set; }
-        public DateOnly ReleaseDate { get; set; }
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Director { get; set; }
+        public int ReleaseYear { get; set; }
     }
 }

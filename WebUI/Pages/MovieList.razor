@@ -1,0 +1,42 @@
+﻿@page "/movies"
+
+<PageTitle>MovieList</PageTitle>
+
+@using Domain;
+@using BusinessLogic;
+@inject MemoryDatabase MemoryDatabase;
+
+<h1>Movie List</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Director</th>
+            <th>Release year</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var movie in movies)
+        {
+            <tr>
+                <td>@movie.Id</td>
+                <td>@movie.Title</td>
+                <td>@movie.Director</td>
+                <td>@movie.ReleaseYear</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    private List<Movie> movies;
+    private MovieService movieService;
+
+    protected override void OnInitialized()
+    {
+        movieService = new MovieService(MemoryDatabase);
+        movies = movieService.GetMovies();
+    }
+}
