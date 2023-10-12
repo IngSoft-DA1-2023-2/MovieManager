@@ -1,0 +1,47 @@
+﻿@page "/movies/new"
+
+@using BusinessLogic;
+@using Domain;
+@inject MemoryDatabase MemoryDatabase
+@inject NavigationManager NavigationManager;
+
+<h1>Movie Form</h1>
+<form @onsubmit="SaveMovie">
+    <div class="form-group"
+        <label for="title">Titulo</label>
+        <input type="text" required class="form-control" id="title" @bind="movie.Title" />
+    </div>
+    <div class="form-group">
+        <label for="director">Director</label>
+        <input type="text" required class="form-control" id="director" @bind="movie.Director" />
+    </div>
+    <div class="form-group">
+        <label for="releaseYear">Año de lanzamiento</label>
+        <input type="number" class="form-control" id="releaseYear" min="0" @bind="movie.ReleaseYear" />
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+    <a href="/movies">Cancelar</a>
+    @if (isCreated)
+    {
+        <p>Se creo la pelicula</p>
+    }
+</form>
+
+@code {
+    private Movie movie;
+    private MovieService movieService;
+    private bool isCreated = false;
+
+    protected override void OnInitialized() {
+        movie = new Movie();
+        movieService = new MovieService(MemoryDatabase);
+        movie.ReleaseYear = DateTime.Now.Year;
+    }
+
+    private void SaveMovie()
+    {
+        movieService.AddMovie(movie);
+        isCreated = true;
+        // NavigationManager.NavigateTo("/movies");
+    }
+}
