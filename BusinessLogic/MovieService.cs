@@ -20,5 +20,10 @@ namespace BusinessLogic
         { 
             return _database.Movies;
         }
+
+        public void AddMovie(Movie movie)
+        {
+            _database.Movies.Add(movie);
+        }
     }
 }

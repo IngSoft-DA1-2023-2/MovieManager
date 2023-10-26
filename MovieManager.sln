@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogic", "BusinessLo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieManagerTest", "MovieManagerTest\MovieManagerTest.csproj", "{4F5AD283-63E1-49A6-8C76-02B7C4D10A31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUI", "WebUI\WebUI.csproj", "{BA84D4ED-A5AD-4B91-834E-E66B52325022}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebUI", "WebUI\WebUI.csproj", "{BA84D4ED-A5AD-4B91-834E-E66B52325022}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
