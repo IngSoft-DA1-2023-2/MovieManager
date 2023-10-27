@@ -4,7 +4,7 @@
 
 @using Domain;
 @using BusinessLogic;
-@inject MemoryDatabase MemoryDatabase;
+@inject MovieManagerContext Context;
 
 <h1>Movie List</h1>
 
@@ -36,7 +36,7 @@
 
     protected override void OnInitialized()
     {
-        movieService = new MovieService(MemoryDatabase);
+        movieService = new MovieService(Context);
         movies = movieService.GetMovies();
     }
 }

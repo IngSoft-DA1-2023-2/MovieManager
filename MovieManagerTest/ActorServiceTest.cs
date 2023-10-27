@@ -12,7 +12,7 @@ namespace MovieManagerTest
         [TestInitialize]
         public void Initialize() 
         { 
-            _service = new ActorService(new MemoryDatabase());
+            _service = new ActorService(TestContextFactory.CreateContext());
         }
 
         [ExpectedException(typeof(DuplicateEntityException))]
@@ -28,6 +28,23 @@ namespace MovieManagerTest
 
             _service.Add(actor);
             _service.Add(actor);
+        }
+
+        [TestMethod]
+        public void AddActorTest()
+        {
+            var actor = new Actor
+            {
+                Name = "Joaquin",
+                LastName = "Mendez",
+                Age = 25,
+            };
+
+            _service.Add(actor);
+            var result = _service.Get(actor.Name);
+            
+            Assert.IsNotNull(result);
+            Assert.AreEqual(result.Name, actor.Name);
         }
     }
 }
