@@ -12,5 +12,6 @@ namespace Domain
         public string Title { get; set; }
         public string Director { get; set; }
         public int ReleaseYear { get; set; }
+        public List<Category> Categories { get; set; }
     }
 }

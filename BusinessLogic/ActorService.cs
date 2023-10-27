@@ -5,11 +5,11 @@ namespace BusinessLogic
 {
     public class ActorService
     {
-        private readonly MemoryDatabase _database;
+        private readonly MovieManagerContext _database;
 
-        public ActorService(MemoryDatabase memoryDatabase) 
+        public ActorService(MovieManagerContext database) 
         {
-            _database = memoryDatabase;
+            _database = database;
         }
 
         public void Add(Actor newActor)
@@ -20,6 +20,12 @@ namespace BusinessLogic
             }
 
             _database.Actors.Add(newActor);
+            _database.SaveChanges();
+        }
+
+        public Actor Get(string name)
+        {
+            return _database.Actors.Where(x => x.Name == name).FirstOrDefault();
         }
     }
 }

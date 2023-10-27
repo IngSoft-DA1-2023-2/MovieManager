@@ -2,7 +2,7 @@
 
 @using BusinessLogic;
 @using Domain;
-@inject MemoryDatabase MemoryDatabase
+@inject MovieManagerContext Context;
 @inject NavigationManager NavigationManager;
 
 <h1>Movie Form</h1>
@@ -34,7 +34,7 @@
 
     protected override void OnInitialized() {
         movie = new Movie();
-        movieService = new MovieService(MemoryDatabase);
+        movieService = new MovieService(Context);
         movie.ReleaseYear = DateTime.Now.Year;
     }
 
